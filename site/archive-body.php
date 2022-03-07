@@ -69,10 +69,104 @@ if ( empty( $list->posts ) ){
     $list = new WP_Query( $args );
 }
 
+function show_prayer_timer() {
+    ?>
+        <style>
+            .prayer-timer-container {
+                text-align: center;
+                margin-top: 25px;
+            }
+
+            .prayer-timer-clock {
+                width: 256px;
+                height: 256px;
+                background-color: #40598dAD;
+                border-radius: 50%;
+                border: 2.5px solid black;
+                display: inline-block;
+                overflow: hidden;
+                position: relative;
+                text-align: center;
+            }
+
+            .prayer-timer-slot {
+                width: 75%;
+                height: 51.6%;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                transform-origin: top;
+                margin: 50% 12%;
+                position: absolute;
+            }
+
+            .slot-1 {
+                transform: rotate(0deg);
+                background: #40598d99;
+            }
+            .slot-2 {
+                transform: rotate(72deg);
+                background: #40598dCC;
+            }
+            .slot-3 {
+                transform: rotate(144deg);
+                background: #40598d;
+            }
+            .slot-4 {
+                transform: rotate(216deg);
+                background: #40598d33;
+            }
+            .slot-5 {
+                transform: rotate(288deg);
+                background: #40598d66;
+            }
+
+            .needle {
+                position: absolute;
+                width: 1.25%;
+                height: 45%;
+                background: black;
+                margin: 49%;
+                z-index: 1;
+                transform-origin: bottom;
+                top: -44%;
+            }
+
+            .prayer-timer-button-container {
+                width: 100%;
+            }
+
+            .start-praying {
+                position: relative;
+                margin: 11.1% 33.3%;
+            }
+
+            .rotate {
+                -webkit-transition:-webkit-transform 900s linear;
+                transform: rotate(360deg);
+            }
+        </style>
+        <br>
+        <h3 id="prayer-timer">PRAYER TIMER</h3>
+        <div class="prayer-timer-container">
+            <div class="prayer-timer-clock">
+                <div class="needle" id="needle" data-degrees="0"></div>
+                <div class="prayer-timer-slot slot-1"></div>
+                <div class="prayer-timer-slot slot-2"></div>
+                <div class="prayer-timer-slot slot-3"></div>
+                <div class="prayer-timer-slot slot-4"></div>
+                <div class="prayer-timer-slot slot-5"></div>
+            </div>
+            <div class="prayer-timer-button-container">
+                <a href="javascript:start_timer();" class="btn btn-common btn-rm" id="start-praying">Start Praying!</a>
+            </div>
+        </div>
+        <script>
+            function start_timer() {
+                jQuery( '.needle' ).attr( 'class', 'needle rotate' );
+            }
+        </script>
+    <?php
+}
 ?>
-
-
-
 
 <!-- TODAYS POST Section -->
 <section id="contact" class="section">
@@ -88,6 +182,9 @@ if ( empty( $list->posts ) ){
                         <?php foreach ($today->posts as $item ) : ?>
                             <?php echo wp_kses_post( $item->post_content ) ?>
                         <?php endforeach; ?>
+                    </div>
+                    <div>
+                        <?php show_prayer_timer(); ?>
                     </div>
                 </div>
             </div>
