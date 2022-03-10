@@ -117,27 +117,7 @@ class P4_Ramadan_Porch {
         $hex = '#4676fa';
         if ( isset( $fields['theme_color']['value'] ) && ! empty( $fields['theme_color']['value'] ) && ! defined( 'PORCH_COLOR_SCHEME' ) ) {
             $theme = $fields['theme_color']['value'];
-            $hex = $fields['theme_color']['value'];
-            switch ( $theme ) {
-                case 'preset':
-                    $hex = '#4676fa';
-                    break;
-                case 'forestgreen':
-                    $hex = '#1EB858';
-                    break;
-                case 'green':
-                    $hex = '#94C523';
-                    break;
-                case 'orange':
-                    $hex = '#F57D41';
-                    break;
-                case 'purple':
-                    $hex = '#6B58CD';
-                    break;
-                case 'teal':
-                    $hex = '#1AB7D8';
-                    break;
-            }
+            $hex = p4r_get_theme_hex( $fields['theme_color']['value'] );
         }
         if ( isset( $fields['custom_theme_color']['value'] ) && ! empty( $fields['custom_theme_color']['value'] ) ){
             $theme = 'custom';
@@ -343,6 +323,35 @@ add_action( 'plugins_loaded', function (){
     }
 } );
 
+if ( ! function_exists( 'p4r_get_theme_hex' ) ) {
+    function p4r_get_theme_hex( $theme_name ) {
+        switch ( $theme_name ) {
+            case 'preset':
+                $hex = '#4676fa';
+                break;
+            case 'forestgreen':
+                $hex = '#1EB858';
+                break;
+            case 'green':
+                $hex = '#94C523';
+                break;
+            case 'orange':
+                $hex = '#F57D41';
+                break;
+            case 'purple':
+                $hex = '#6B58CD';
+                break;
+            case 'teal':
+                $hex = '#1AB7D8';
+                break;
+            default:
+                $hex = '#4676fa';
+                break;
+        }
+        return $hex;
+    }
+}
+
 if ( ! function_exists( 'p4r_porch_fields' ) ) {
     function p4r_porch_fields() {
         $defaults = [
@@ -389,11 +398,16 @@ if ( ! function_exists( 'p4r_porch_fields' ) ) {
                 'value' => trailingslashit( plugin_dir_url( __FILE__ ) ) . 'site/img/stencil-header.png',
                 'type' => 'text',
             ],
-
             'what_image' => [
                 'label' => 'What is Ramadan Image',
                 'value' => '',
                 'type' => 'text',
+            ],
+            'show_prayer_timer' => [
+                'label' => 'Show Prayer Timer',
+                'default' => __( 'Yes', 'pray4ramadan-porch' ),
+                'value' => 'yes',
+                'type' => 'prayer_timer_toggle',
             ],
             "email" => [
                 "label" => "Address to send sign-up and notification emails from",

@@ -231,7 +231,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                         <td><label for="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>"><?php echo esc_html( $val['native_name'] )?></label></td>
                         <?php if ( $field["type"] === "textarea" ) :?>
                             <td><textarea name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>"><?php echo wp_kses_post( $field["translations"][$val['language']] ?? "" );?></textarea></td>
-                        <?php else: ?>
+                        <?php else : ?>
                             <td><input name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>" type="text" value="<?php echo esc_html( $field["translations"][$val['language']] ?? "" );?>"/></td>
                         <?php endif; ?>
                     </tr>
@@ -243,7 +243,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
 
     public function main_column() {
         global $allowed_tags;
-        $allowed_tags['script'] =  array(
+        $allowed_tags['script'] = array(
             'async' => array(),
             'src' => array()
         );
@@ -283,7 +283,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                 foreach ( $fields as $field_key => $field ){
                     if ( isset( $field["translations"] ) ){
                         foreach ( $langs as $lang_code => $lang_values ){
-                            if ( isset ( $post_fields["field_key_" . $field_key . "_translation-" . $lang_code] ) ){
+                            if ( isset( $post_fields["field_key_" . $field_key . "_translation-" . $lang_code] ) ){
                                 $saved_fields[$field_key]["translations"][$lang_code] = $post_fields["field_key_" . $field_key . "_translation-" . $lang_code];
                             }
                         }
@@ -357,6 +357,23 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                     <?php if ( isset( $field["translations"] ) ){
                                         self::translation_cell( $langs, $key, $field );
                                     } ?>
+                                </td>
+                            </tr>
+                        <?php elseif ( 'prayer_timer_toggle' === $field['type'] ) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo esc_html( $field['label'] ); ?>
+                                </td>
+                                <td>
+                                    <select name="list[<?php echo esc_html( $key ); ?>]">
+                                    <?php if ( $field['value'] === 'yes' || ! isset( $field['value'] ) || empty( $field['value'] ) ) : ?>
+                                        <option value="yes" selected="selected"><?php echo esc_html( __( 'Yes', 'pray4ramadan-porch' ) ); ?></option>
+                                        <option value="no"><?php echo esc_html( __( 'No', 'pray4ramadan-porch' ) ); ?></option>
+                                    <?php else : ?>
+                                        <option value="yes"><?php echo esc_html( __( 'Yes', 'pray4ramadan-porch' ) ); ?></option>
+                                        <option value="no" selected="selected"><?php echo esc_html( __( 'No', 'pray4ramadan-porch' ) ); ?></option>
+                                    <?php endif; ?>
+                                    </select>
                                 </td>
                             </tr>
                         <?php elseif ( 'theme_select' === $field['type'] ) : ?>
@@ -487,7 +504,7 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
         ", ARRAY_A);
         $installed_langs = [];
         foreach ( $installed_langs_query as $result ){
-            if ( $result["meta_value"] === NULL ){
+            if ( $result["meta_value"] === null ){
                 $result["meta_value"] = 'en_US';
             }
             if ( !isset( $installed_langs[$result["meta_value"]] ) ){
