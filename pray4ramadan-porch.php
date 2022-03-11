@@ -117,8 +117,29 @@ class P4_Ramadan_Porch {
         $hex = '#4676fa';
         if ( isset( $fields['theme_color']['value'] ) && ! empty( $fields['theme_color']['value'] ) && ! defined( 'PORCH_COLOR_SCHEME' ) ) {
             $theme = $fields['theme_color']['value'];
-            $hex = p4r_get_theme_hex( $fields['theme_color']['value'] );
+            $hex = $fields['theme_color']['value'];
+            switch ( $theme_name ) {
+                case 'preset':
+                    $hex = '#4676fa';
+                    break;
+                case 'forestgreen':
+                    $hex = '#1EB858';
+                    break;
+                case 'green':
+                    $hex = '#94C523';
+                    break;
+                case 'orange':
+                    $hex = '#F57D41';
+                    break;
+                case 'purple':
+                    $hex = '#6B58CD';
+                    break;
+                case 'teal':
+                    $hex = '#1AB7D8';
+                    break;
+            }
         }
+
         if ( isset( $fields['custom_theme_color']['value'] ) && ! empty( $fields['custom_theme_color']['value'] ) ){
             $theme = 'custom';
             $hex = $fields['custom_theme_color']['value'];
@@ -322,35 +343,6 @@ add_action( 'plugins_loaded', function (){
         }
     }
 } );
-
-if ( ! function_exists( 'p4r_get_theme_hex' ) ) {
-    function p4r_get_theme_hex( $theme_name ) {
-        switch ( $theme_name ) {
-            case 'preset':
-                $hex = '#4676fa';
-                break;
-            case 'forestgreen':
-                $hex = '#1EB858';
-                break;
-            case 'green':
-                $hex = '#94C523';
-                break;
-            case 'orange':
-                $hex = '#F57D41';
-                break;
-            case 'purple':
-                $hex = '#6B58CD';
-                break;
-            case 'teal':
-                $hex = '#1AB7D8';
-                break;
-            default:
-                $hex = '#4676fa';
-                break;
-        }
-        return $hex;
-    }
-}
 
 if ( ! function_exists( 'p4r_porch_fields' ) ) {
     function p4r_porch_fields() {

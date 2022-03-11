@@ -88,18 +88,10 @@ if ( empty( $list->posts ) ){
                         <?php endforeach; ?>
                     </div>
                     <?php
-                    $hex = p4r_get_theme_hex( $porch_fields['theme_color']['value'] );
-
-                    // Check for custom theme hex
-                    if ( isset( $porch_fields['custom_theme_color']['value'] ) && ! empty( $porch_fields['custom_theme_color']['value'] ) ){
-                        $hex = $porch_fields['custom_theme_color']['value'];
-                    }
-
-
                     if ( $porch_fields['prayer_timer_toggle']['value'] === 'yes' ) :
                         if ( function_exists( 'show_prayer_timer' ) ) : ?>
                             <div class="mt-5">
-                                <?php show_prayer_timer( [ 'color' => $hex, 'duration' => 15] ); ?>
+                                <?php show_prayer_timer( [ 'color' => PORCH_COLOR_SCHEME_HEX, 'duration' => 15] ); ?>
                             </div>
                         <?php endif;
                     endif; ?>
