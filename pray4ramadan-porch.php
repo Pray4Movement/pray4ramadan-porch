@@ -118,7 +118,7 @@ class P4_Ramadan_Porch {
         if ( isset( $fields['theme_color']['value'] ) && ! empty( $fields['theme_color']['value'] ) && ! defined( 'PORCH_COLOR_SCHEME' ) ) {
             $theme = $fields['theme_color']['value'];
             $hex = $fields['theme_color']['value'];
-            switch ( $theme_name ) {
+            switch ( $theme ) {
                 case 'preset':
                     $hex = '#4676fa';
                     break;
