@@ -95,11 +95,13 @@ if ( empty( $list->posts ) ){
                         $hex = $porch_fields['custom_theme_color']['value'];
                     }
 
-                    if ( $porch_fields['prayer_timer_toggle']['value'] === 'yes' ) : ?>
-                    <div class="mt-5">
-                        <?php show_prayer_timer( [ 'color' => $hex, 'duration' => 15] ); ?>
-                    </div>
-                    <?php endif; ?>
+                    if ( $porch_fields['prayer_timer_toggle']['value'] === 'yes' ) :
+                        if ( function_exists( 'show_prayer_timer' ) ) : ?>
+                            <div class="mt-5">
+                                <?php show_prayer_timer( [ 'color' => $hex, 'duration' => 15] ); ?>
+                            </div>
+                        <?php endif;
+                    endif; ?>
                 </div>
             </div>
         </div>
