@@ -466,12 +466,13 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
                 $from_translation = 'en_US';
             }
             if ( $language ){
+                $default_people_name = isset( $_POST[ $language . "_people_plural_masculine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_plural_masculine"] ) ) : null;
                 $args = [
                     "location_name" => isset( $_POST[ $language . "_location_name"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_location_name"] ) ) : null,
-                    "people_singular_masculine" => isset( $_POST[ $language . "_people_singular_masculine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_singular_masculine"] ) ) : null,
-                    "people_singular_feminine" => isset( $_POST[ $language . "_people_singular_feminine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_singular_feminine"] ) ) : null,
-                    "people_plural_masculine" => isset( $_POST[ $language . "_people_plural_masculine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_plural_masculine"] ) ) : null,
-                    "people_plural_feminine" => isset( $_POST[ $language . "_people_plural_feminine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_plural_feminine"] ) ) : null,
+                    "people_singular_masculine" => isset( $_POST[ $language . "_people_singular_masculine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_singular_masculine"] ) ) : $default_people_name,
+                    "people_singular_feminine" => isset( $_POST[ $language . "_people_singular_feminine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_singular_feminine"] ) ) : $default_people_name,
+                    "people_plural_masculine" => $default_people_name,
+                    "people_plural_feminine" => isset( $_POST[ $language . "_people_plural_feminine"] ) ? sanitize_text_field( wp_unslash( $_POST[ $language . "_people_plural_feminine"] ) ) : $default_people_name,
                 ];
 
                 P4_Ramadan_Porch_Starter_Content::load_content( $language, $args, $from_translation );
@@ -490,6 +491,26 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
                     AND ( t1.post_status = 'publish' OR t1.post_status = 'future' )
                     AND ( t2.post_status = 'publish' OR t2.post_status = 'future' )
                 ");
+            }
+
+            if ( isset( $_POST["delete_posts"] ) ){
+                $language = sanitize_text_field( wp_unslash( $_POST["delete_posts"] ) );
+                $wpdb->query( $wpdb->prepare( "
+                    DELETE t1 FROM $wpdb->posts t1
+                    LEFT JOIN $wpdb->postmeta t1m ON ( t1m.post_ID = t1.ID and t1m.meta_key = 'post_language')
+                    WHERE t1m.meta_value = %s
+                    AND ( t1.post_status = 'publish' OR t1.post_status = 'future' )
+                    AND t1.post_type = 'landing'
+                ", $language ) );
+                if ( $language === "en_US" ){
+                    $wpdb->query( "
+                        DELETE t1 FROM $wpdb->posts t1
+                        LEFT JOIN $wpdb->postmeta t1m ON ( t1m.post_ID = t1.ID and t1m.meta_key = 'post_language')
+                        WHERE t1m.meta_value IS NULL
+                        AND ( t1.post_status = 'publish' OR t1.post_status = 'future' )
+                        AND t1.post_type = 'landing'
+                    " );
+                }
             }
         }
         $languages = dt_ramadan_list_languages();
@@ -531,12 +552,14 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
                             <th>Language</th>
                             <th>Installed Posts</th>
                             <th>Location Name</th>
-                            <th>People Singular Masculine</th>
-                            <th>People Singular Feminine</th>
+<!--                            <th>People Singular Masculine</th>-->
+<!--                            <th>People Singular Feminine</th>-->
                             <th>People Plural Masculine</th>
                             <th>People Plural Feminine</th>
                             <th>Install</th>
                             <th>Install in English</th>
+                            <th>Delete Posts</th>
+                            <th>Duplicates</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -546,13 +569,14 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
                             $country_name = get_field_translation( $fields["country_name"], $language_key );
                             $already_installed = ( $installed_langs[$language_key] ?? 0 ) > 0;
                             $available_in_language = $language["prayer_fuel"] ?? false;
+                            $delete_enabled = ( $installed_langs[$language_key] ?? 0 ) > 1
                             ?>
                             <tr>
                                 <td><?php echo esc_html( $language["flag"] ); ?></td>
                                 <td><?php echo esc_html( $installed_langs[$language_key] ?? 0 ); ?></td>
                                 <td><input style="width:150px" name="<?php echo esc_html( $language_key ); ?>_location_name" value="<?php echo esc_html( $country_name ); ?>"></td>
-                                <td><input style="width:150px" name="<?php echo esc_html( $language_key ); ?>_people_singular_masculine" value="<?php echo esc_html( $people_name ); ?>"></td>
-                                <td><input style="width:150px" name="<?php echo esc_html( $language_key ); ?>_people_singular_feminine" value="<?php echo esc_html( $people_name ); ?>"></td>
+<!--                                <td><input style="width:150px" name="--><?php //echo esc_html( $language_key ); ?><!--_people_singular_masculine" value="--><?php //echo esc_html( $people_name ); ?><!--"></td>-->
+<!--                                <td><input style="width:150px" name="--><?php //echo esc_html( $language_key ); ?><!--_people_singular_feminine" value="--><?php //echo esc_html( $people_name ); ?><!--"></td>-->
                                 <td><input style="width:150px" name="<?php echo esc_html( $language_key ); ?>_people_plural_masculine" value="<?php echo esc_html( $people_name ); ?>"></td>
                                 <td><input style="width:150px" name="<?php echo esc_html( $language_key ); ?>_people_plural_feminine" value="<?php echo esc_html( $people_name ); ?>"></td>
                                 <td>
@@ -564,6 +588,16 @@ class P4_Ramadan_Porch_Landing_Tab_Starter_Content {
                                     <button type="submit" name="install_ramadan_language_english" class="button" value="<?php echo esc_html( $language_key ); ?>" <?php disabled( $already_installed ) ?>>
                                         Install Content in English
                                     </button>
+                                </td>
+                                <td>
+                                    <button type="button" onclick="jQuery('#confirm-delete-<?php echo esc_html( $language_key ); ?>').show()" class="button" <?php disabled( !$delete_enabled ) ?>>
+                                        Delete all <?php echo esc_html( $language["flag"] ); ?>
+                                    </button>
+                                    <div id="confirm-delete-<?php echo esc_html( $language_key ); ?>" style="display: none">
+                                        Are you sure? <button type="submit" class="button button-primary" name="delete_posts" value="<?php echo esc_html( $language_key ); ?>">Yes</button>
+                                        <button type="button" class="button button-secondary" onclick="jQuery('#confirm-delete-<?php echo esc_html( $language_key ); ?>').hide()">No</button>
+                                    </div>
+
                                 </td>
                                 <td>
                                     <?php if ( ( $installed_langs[$language_key] ?? 0 ) > 60 ) :?>

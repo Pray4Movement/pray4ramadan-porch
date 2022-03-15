@@ -7,29 +7,7 @@
       });
     });
 
-/*
-   MixitUp
-   ========================================================================== */
-    $(function(){
-      $('#portfolio').mixItUp();
-    });
 
-/*
-   Touch Owl Carousel
-   ========================================================================== */
-    $(".touch-slider").owlCarousel({
-        navigation: false,
-        pagination: true,
-        slideSpeed: 1000,
-        stopOnHover: true,
-        autoPlay: true,
-        items: 1,
-        itemsDesktopSmall: [1024, 1],
-        itemsTablet: [600, 1],
-        itemsMobile: [479, 1]
-    });
-    $('.touch-slider').find('.owl-prev').html('<i class="fa fa-chevron-left"></i>');
-    $('.touch-slider').find('.owl-next').html('<i class="fa fa-chevron-right"></i>');
 
 /*
    Sticky Nav
@@ -42,17 +20,6 @@
         }
     });
 
-/*
-   VIDEO POP-UP
-   ========================================================================== */
-    $('.video-popup').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-    });
 
 /*
    Back Top Link
@@ -104,22 +71,14 @@
 
   });
 
-  /* Nivo Lightbox
-  ========================================================*/
-  jQuery(document).ready(function( $ ) {
-     $('.lightbox').nivoLightbox({
-      effect: 'fadeScale',
-      keyboardNav: true,
-    });
 
-  });
 
   /* stellar js
   ========================================================*/
   $(function(){
     $.stellar({
       horizontalScrolling: false,
-      verticalOffset: 40,
+      verticalOffset: 0,
       responsive: true
     });
   });
