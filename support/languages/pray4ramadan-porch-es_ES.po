@@ -292,7 +292,7 @@ msgstr "Dios, oramos por los creyentes en [location_name] que sabrán lo fácil 
 
 #: admin/starter-content.php:185
 msgid "\"I will give thanks to you, O Lord, among the ([people_name]) peoples; I will sing praises to you among the nations.\" (Psalm 57:9)"
-msgstr "Te alabare, entre los pueblos ([people_singular_masculine]) oh Señor; te cantaré alabanzas a ti entre las naciones.\" (Salmos 57:9)"
+msgstr "Te alabare, entre los pueblos ([people_plural_masculine]) oh Señor; te cantaré alabanzas a ti entre las naciones.\" (Salmos 57:9)"
 
 #: admin/starter-content.php:186
 msgid "\"Your kingdom come, your will be done, on earth as it is in heaven.\" (Matthew 6:10) Your ways are not our ways. Your Kingdom is unlike every earthly kingdom. We pray for your heavenly Kingdom to come in every home, neighborhood, city, and region throughout this land.\""
@@ -417,7 +417,7 @@ msgstr "\"Cuando alguno oye la palabra del reino y no la entiende, viene el mali
 
 #: admin/starter-content.php:230
 msgid "\"By faith Abraham, when he was tested, offered up Isaac, and he who had received the promises was in the act of offering up his only son, of whom it was said, ’Through Isaac shall your offspring be named’.\" (Hebrews 11:17-18) Lord, may [people_name] be like Abraham, exhibiting radical, immediate, and costly obedience."
-msgstr "\"Por la fe Abraham, cuando fue probado, ofreció a Isaac, y el que había recibido las promesas estaba en el acto de ofrecer a su único hijo, de quien se dijo: 'En Isaac será nombrada tu descendencia'”. (Hebreos 11:17-18) Señor, que el [people_singular_masculine] sea como Abraham, exhibiendo una obediencia radical, inmediata y costosa."
+msgstr "\"Por la fe Abraham, cuando fue probado, ofreció a Isaac, y el que había recibido las promesas estaba en el acto de ofrecer a su único hijo, de quien se dijo: 'En Isaac será nombrada tu descendencia'”. (Hebreos 11:17-18) Señor, que los [people_plural_masculine] sean como Abraham, exhibiendo una obediencia radical, inmediata y costosa."
 
 #: admin/starter-content.php:231
 msgid "Lord, we pray for believers in [location_name] to be like ducklings in ways they make disciples. https://zume.training/duckling-discipleship-leading-sooner/"
@@ -553,7 +553,7 @@ msgstr "Oramos para que cada creyente en [location_name] \"recuerde las palabras
 
 #: admin/starter-content.php:279
 msgid "\"He considered the reproach of Christ greater wealth than the treasures of Egypt, for he was looking to the reward.\" (Hebrews 11:26) Awaken [people_name] to the greater wealth of Christ. May multitudes esteem Him more than any treasure they can have here on earth."
-msgstr "\"Tuvo por mayor riqueza el vituperio de Cristo que los tesoros de Egipto, porque tenía la mirada puesta en la recompensa\". (Hebreos 11:26) Que los [people_singular_masculine] despierten a la mayor riqueza de Cristo. Que las multitudes lo estimen más que cualquier tesoro que puedan tener aquí en la tierra."
+msgstr "\"Tuvo por mayor riqueza el vituperio de Cristo que los tesoros de Egipto, porque tenía la mirada puesta en la recompensa\". (Hebreos 11:26) Que los [people_plural_masculine] despierten a la mayor riqueza de Cristo. Que las multitudes lo estimen más que cualquier tesoro que puedan tener aquí en la tierra."
 
 #: admin/starter-content.php:280
 msgid "Father, we pray for believers in [location_name] to know how to meet, pray, learn, grow, fellowship, and practice obeying and sharing in simple churches with the 3/3 Group Meeting Pattern. https://zume.training/3-3-group-meeting-pattern/"
@@ -601,7 +601,7 @@ msgstr "Señor, oramos por los creyentes en [location_name] para que sepan cómo
 
 #: admin/starter-content.php:297
 msgid "\"Bless our God, O [people_name] peoples; let the sound of his praise be heard,\" (Psalm 66:8)"
-msgstr "\"Bendecid a nuestro Dios, oh pueblos [people_singular_masculine]; que se escuche el sonido de su alabanza,\" (Salmos 66:8)"
+msgstr "\"Bendecid a nuestro Dios, oh pueblos [people_plural_masculine]; que se escuche el sonido de su alabanza,\" (Salmos 66:8)"
 
 #: admin/starter-content.php:298
 msgid "\"Jesus said, ’Let the little children come to me and do not hinder them, for to such belongs the kingdom of heaven.’\" (Matthew 19:14) We pray that nothing would hinder true seekers from entering into Your Kingdom —not gender, age, socioeconomic status, nationality, or education level."
@@ -629,7 +629,7 @@ msgstr "\"Así que siempre me esmero en tener una conciencia limpia tanto hacia 
 
 #: admin/starter-content.php:307
 msgid "\"By faith the walls of Jericho fell down after they had been encircled for seven days.\" (Hebrews 11:30) May every wall that separates [people_name] from Christ fall down as we faithfully pray and obey His commands."
-msgstr "\"Por la fe cayeron los muros de Jericó después de haber sido rodeados por siete días\". (Hebreos 11:30) Que todos los muros que separan a los [people_singular_masculine] de Cristo se derrumben mientras oramos fielmente y obedecemos sus mandamientos."
+msgstr "\"Por la fe cayeron los muros de Jericó después de haber sido rodeados por siete días\". (Hebreos 11:30) Que todos los muros que separan a los [people_plural_masculine] de Cristo se derrumben mientras oramos fielmente y obedecemos sus mandamientos."
 
 #: admin/starter-content.php:308
 msgid "Father, we pray for believers in [location_name] to understand why multiplying matters, and multiplying quickly matters even more. https://zume.training/pace-of-multiplication-matters/"
@@ -725,7 +725,7 @@ msgstr "\"Porque desde el nacimiento del sol hasta su puesta, mi nombre será gr
 
 #: admin/starter-content.php:347
 msgid "\"I tell you I will not drink again of this fruit of the vine until that day when I drink it new with you in my Father’s kingdom.\" (Matthew 26:29) Even more strongly than fasting [people_name] today long for their thirst to be quenched and their bellies to be filled with extravagant food, may your Church’s anticipation be growing for the day when Jesus drinks again of the fruit of the vine that He secured through His death, burial, and resurrection. We pray that there will be many [people_name] from every people group around that table."
-msgstr "\"Os digo que no volveré a beber de este fruto de la vid hasta aquel día en que lo beba nuevo con vosotros en el reino de mi Padre.\" (Mateo 26:29) Aún más fuerte que el ayuno de los [people_singular_masculine] en el día de hoy que anhelan satisfacer su sed y llenar sus vientres de comida extravagante, que la anticipación de tu Iglesia crezca por el día en que Jesús beba de nuevo del fruto de la vid que Él aseguró a través de Su muerte, sepultura y resurrección. Oramos para que hayan muchas [people_plural_femenine] sentadas alrededor de esa mesa."
+msgstr "\"Os digo que no volveré a beber de este fruto de la vid hasta aquel día en que lo beba nuevo con vosotros en el reino de mi Padre.\" (Mateo 26:29) Aún más fuerte que el ayuno de los [people_plural_masculine] en el día de hoy que anhelan satisfacer su sed y llenar sus vientres de comida extravagante, que la anticipación de tu Iglesia crezca por el día en que Jesús beba de nuevo del fruto de la vid que Él aseguró a través de Su muerte, sepultura y resurrección. Oramos para que hayan muchas [people_plural_femenine] sentadas alrededor de esa mesa."
 
 #: admin/starter-content.php:348
 msgid "Thank you Lord for the example of the book of Acts, continue these stories and events in [location_name] today. We pray for unprecedented Kingdom advance this year in [location_name]!"

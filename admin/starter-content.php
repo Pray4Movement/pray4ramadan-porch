@@ -120,7 +120,7 @@ class P4_Ramadan_Porch_Starter_Content {
         $values = p4r_porch_fields();
         $fields = [
             "location_name" => $names["location_name"],
-            "people_name" => $names["people_singular_masculine"],
+            "people_name" => $names["people_plural_masculine"],
             "people_singular_masculine" => $names["people_singular_masculine"],
             "people_singular_feminine" => $names["people_singular_feminine"],
             "people_plural_masculine" => $names["people_plural_masculine"],

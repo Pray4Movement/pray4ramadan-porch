@@ -44,13 +44,13 @@ add_action( 'tgmpa_register', function () {
 //            'required'              => false,
 //            'version'               => '0.1',
 //        ),
-        array(
-            'name'                  => 'Disciple.Tools - Webform',
-            'slug'                  => 'disciple-tools-webform',
-            'source'                => 'https://github.com/DiscipleTools/disciple-tools-webform/releases/latest/download/disciple-tools-webform.zip',
-            'required'              => false,
-            'version'               => '4.4',
-        ),
+//        array(
+//            'name'                  => 'Disciple.Tools - Webform',
+//            'slug'                  => 'disciple-tools-webform',
+//            'source'                => 'https://github.com/DiscipleTools/disciple-tools-webform/releases/latest/download/disciple-tools-webform.zip',
+//            'required'              => false,
+//            'version'               => '4.4',
+//        ),
         array(
             'name'                  => 'Disciple.Tools - Prayer Campaigns',
             'slug'                  => 'disciple-tools-prayer-campaigns',
