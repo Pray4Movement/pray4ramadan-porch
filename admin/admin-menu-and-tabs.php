@@ -359,7 +359,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                     } ?>
                                 </td>
                             </tr>
-                        <?php elseif ( 'show_prayer_timer' === $field['type'] ) : ?>
+                        <?php elseif ( 'prayer_timer_toggle' === $field['type'] ) : ?>
                             <tr>
                                 <td>
                                     <?php echo esc_html( $field['label'] ); ?>

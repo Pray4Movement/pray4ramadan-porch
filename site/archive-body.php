@@ -88,7 +88,7 @@ if ( empty( $list->posts ) ){
                         <?php endforeach; ?>
                     </div>
                     <?php
-                    if ( isset( $porch_fields['show_prayer_timer']['value'] ) && ( $porch_fields['show_prayer_timer']['value'] === 'yes' ) || empty( $porch_fields['show_prayer_timer']['value'] ) ) :
+                    if ( !isset( $porch_fields['show_prayer_timer']['value'] ) || empty( $porch_fields['show_prayer_timer']['value'] ) || $porch_fields['show_prayer_timer']['value'] === 'yes' ) :
                         if ( function_exists( 'show_prayer_timer' ) ) : ?>
                             <div class="mt-5">
                                 <?php show_prayer_timer( [ 'color' => PORCH_COLOR_SCHEME_HEX, 'duration' => 15] ); ?>
