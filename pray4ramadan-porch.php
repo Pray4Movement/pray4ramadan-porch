@@ -399,7 +399,7 @@ if ( ! function_exists( 'p4r_porch_fields' ) ) {
                 'label' => 'Show Prayer Timer',
                 'default' => __( 'Yes', 'pray4ramadan-porch' ),
                 'value' => 'yes',
-                'type' => 'prayer_timer_toggle',
+                'type' => 'show_prayer_timer',
             ],
             "email" => [
                 "label" => "Address to send sign-up and notification emails from",
