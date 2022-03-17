@@ -392,7 +392,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                             <option disabled>-----</option>
                                         <?php endif; ?>
                                         <option value="en_US">English</option>
-                                        <option value="es_ES">Spanish</option>
+                                        <option value="es_ES">Español</option>
                                         <option value="fr_FR">Français</option>
                                         <option value="pt_PT">Português</option>
                                     </select>
