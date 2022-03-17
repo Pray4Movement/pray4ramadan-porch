@@ -109,6 +109,17 @@ class P4_Ramadan_Porch {
             define( 'PORCH_LANDING_POST_TYPE_PLURAL', 'Porch' ); // Alphanumeric key. Use underscores not hyphens. No special characters. Must be less than 20 characters
         }
 
+        // Set Default Language
+        $default_language = 'en_US';
+
+        if ( isset( $fields['default_language'] ) && ! empty( $fields['default_language']['value'] ) ) {
+            $default_language = $fields['default_language']['value'];
+        }
+
+        if ( ! defined( 'PORCH_DEFAULT_LANGUAGE' ) ) {
+            define( 'PORCH_DEFAULT_LANGUAGE', $default_language );
+        }
+
         /**
          * This template includes 6 color schemes set by the definition below.
          * preset, teal, forestgreen, green, purple, orange
@@ -446,6 +457,12 @@ if ( ! function_exists( 'p4r_porch_fields' ) ) {
                 'default' => get_site_option( "p4r_porch_google_analytics" ),
                 'value' => '',
                 'type' => 'textarea',
+            ],
+            'default_language' => [
+                'label' => 'Default Language',
+                'default' => 'en_US',
+                'value' => '',
+                'type' => 'default_language_select',
             ],
         ];
 
