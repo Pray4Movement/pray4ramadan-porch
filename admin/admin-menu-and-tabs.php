@@ -216,7 +216,7 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
             <?php
             $number_of_translations = 0;
             foreach ( $langs as $lang => $val ){
-                if ( !empty( $field["translations"][$val['language']] ) ){
+                if ( !empty( $field["available_translations"][$val['language']] ) ){
                     $number_of_translations++;
                 }
             }
@@ -230,9 +230,9 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                     <tr>
                         <td><label for="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>"><?php echo esc_html( $val['native_name'] )?></label></td>
                         <?php if ( $field["type"] === "textarea" ) :?>
-                            <td><textarea name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>"><?php echo wp_kses_post( $field["translations"][$val['language']] ?? "" );?></textarea></td>
+                            <td><textarea name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>"><?php echo wp_kses_post( $field["available_translations"][$val['language']] ?? "" );?></textarea></td>
                         <?php else : ?>
-                            <td><input name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>" type="text" value="<?php echo esc_html( $field["translations"][$val['language']] ?? "" );?>"/></td>
+                            <td><input name="field_key_<?php echo esc_html( $key )?>_translation-<?php echo esc_html( $val['language'] )?>" type="text" value="<?php echo esc_html( $field["available_translations"][$val['language']] ?? "" );?>"/></td>
                         <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
@@ -281,10 +281,10 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                 }
 
                 foreach ( $fields as $field_key => $field ){
-                    if ( isset( $field["translations"] ) ){
+                    if ( isset( $field["available_translations"] ) ){
                         foreach ( $langs as $lang_code => $lang_values ){
                             if ( isset( $post_fields["field_key_" . $field_key . "_translation-" . $lang_code] ) ){
-                                $saved_fields[$field_key]["translations"][$lang_code] = $post_fields["field_key_" . $field_key . "_translation-" . $lang_code];
+                                $saved_fields[$field_key]["available_translations"][$lang_code] = $post_fields["field_key_" . $field_key . "_translation-" . $lang_code];
                             }
                         }
                     }
@@ -320,19 +320,19 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                     <?php echo esc_html( $field['label'] ); ?>
                                 </td>
                                 <td>
-                                    <?php if ( !empty( $field["default"] ) && isset( $field["translations"] ) ) {
+                                    <?php if ( !empty( $field["default"] ) && isset( $field["available_translations"] ) ) {
                                         echo '<h3>Default translated text:</h3>';
                                         echo nl2br( esc_html( $field["default"] ) );
                                         echo '<br><br>';
                                     }
-                                    if ( isset( $field["translations"] ) ){
+                                    if ( isset( $field["available_translations"] ) ){
                                         echo '<p>Click the <img style="height: 15px; vertical-align: middle" src="' . esc_html( get_template_directory_uri() . "/dt-assets/images/languages.svg" ) . '"> button to set a value for each language. Custom text for all languages: </p>';
                                     }
                                     ?>
                                     <input type="text" name="list[<?php echo esc_html( $key ); ?>]" id="<?php echo esc_html( $key ); ?>" value="<?php echo esc_html( $field['value'] ); ?>" placeholder="<?php echo esc_html( $field['label'] ); ?>"/>
                                 </td>
                                 <td style="vertical-align: middle;">
-                                    <?php if ( isset( $field["translations"] ) ){
+                                    <?php if ( isset( $field["available_translations"] ) ){
                                         self::translation_cell( $langs, $key, $field );
                                     } ?>
                                 </td>
@@ -343,18 +343,18 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                     <?php echo esc_html( $field['label'] ); ?>
                                 </td>
                                 <td>
-                                    <?php if ( !empty( $field["default"] ) && isset( $field["translations"] ) ) {
+                                    <?php if ( !empty( $field["default"] ) && isset( $field["available_translations"] ) ) {
                                         echo '<h3>Default translated text:</h3>';
                                         echo nl2br( esc_html( $field["default"] ) );
                                         echo '<br><br>';
                                     }
-                                    if ( isset( $field["translations"] ) ){
+                                    if ( isset( $field["available_translations"] ) ){
                                         echo '<p>Click the <img style="height: 15px; vertical-align: middle" src="' . esc_html( get_template_directory_uri() . "/dt-assets/images/languages.svg" ) . '"> button to set a value for each language. Custom text for all languages:</p>';
                                     } ?>
                                     <textarea name="list[<?php echo esc_html( $key ); ?>]" id="<?php echo esc_html( $key ); ?>" placeholder="<?php echo esc_html( $field['label'] ); ?>"><?php echo wp_kses( $field['value'], $allowed_tags ); ?></textarea>
                                 </td>
                                 <td style="vertical-align: middle;">
-                                    <?php if ( isset( $field["translations"] ) ){
+                                    <?php if ( isset( $field["available_translations"] ) ){
                                         self::translation_cell( $langs, $key, $field );
                                     } ?>
                                 </td>
@@ -385,16 +385,15 @@ class P4_Ramadan_Porch_Landing_Tab_Home {
                                     <select name="list[<?php echo esc_html( $key ); ?>]">
                                         <?php if ( isset( $field['value'] ) && ! empty( $field['value'] ) ) : ?>
                                             <?php
-                                                $translations = dt_ramadan_list_languages();
-                                                $default_translation_label = $translations[ $field['value'] ]['native_name'];
+                                                $available_translations = dt_ramadan_list_languages();
+                                                $default_translation_label = $available_translations[ $field['value'] ]['native_name'];
                                             ?>
                                             <option value="<?php echo esc_html( $field['value'] ); ?>" selected="selected"><?php echo esc_html( $default_translation_label ); ?></option>
                                             <option disabled>-----</option>
                                         <?php endif; ?>
-                                        <option value="en_US">English</option>
-                                        <option value="es_ES">Español</option>
-                                        <option value="fr_FR">Français</option>
-                                        <option value="pt_PT">Português</option>
+                                        <?php foreach ( $available_translations as $translation ) : ?>
+                                            <option value="<?php echo esc_attr( $translation['language'] ); ?>"><?php echo esc_html( $translation['native_name'] ); ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </td>
                             </tr>
