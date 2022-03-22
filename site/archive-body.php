@@ -95,6 +95,8 @@ if ( empty( $list->posts ) ){
     );
     $list = new WP_Query( $args );
 }
+
+add_action( 'wp_head', 'og_protocol' );
 ?>
 
 <!-- TODAYS POST Section -->

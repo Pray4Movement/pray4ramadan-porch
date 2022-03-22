@@ -590,3 +590,25 @@ if ( ! function_exists( 'p4r_recursive_parse_args' ) ) {
         return $new_args;
     }
 }
+
+// Add Open Graph Protocol meta tags in header
+function og_protocol() {
+    $fields = p4r_porch_fields();
+
+    $og_title = PORCH_TITLE;
+    $og_description = get_field_translation( $fields['goal'], PORCH_DEFAULT_LANGUAGE );
+    $og_url = get_site_url();
+    ?>
+
+    
+<!-- Open Graph Protocol -->
+<meta property="og:title" content="<?php echo esc_attr( $og_title ); ?> - Pray4Movement"/>
+<meta property="og:description" content="<?php echo esc_attr( $og_description ); ?>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="<?php echo esc_attr( $og_url ); ?>"/>
+<meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo() ); ?>"/>
+<meta property="og:image" content="https://pray4movement.org/wp-content/uploads/2021/08/cropped-p4m-logo-192x192.png"/>
+     <?php
+}
+
+ add_action( 'wp_head', 'og_protocol' );
