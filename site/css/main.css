@@ -156,6 +156,10 @@ a:not([href]):not([tabindex]):hover {
   font-size: 20px;
   color: #fff;
 }
+.logo-image {
+  max-width: -webkit-fill-available;
+  margin-bottom:15px;
+}
 .menu-bg {
   background-color: #fff!important;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.12);

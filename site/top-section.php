@@ -58,7 +58,7 @@ $langs = dt_ramadan_list_languages();
             <div class="col-md-12">
                 <div class="contents content-height text-center">
                     <?php if ( isset( $porch_fields['logo_url']['value'] ) && ! empty( $porch_fields['logo_url']['value'] ) ) : ?>
-                        <img src="<?php echo esc_url( $porch_fields['logo_url']['value'] ) ?>" alt=""  />
+                        <img class="logo-image" src="<?php echo esc_url( $porch_fields['logo_url']['value'] ) ?>" alt=""  />
                     <?php else : ?>
                         <h1 class="wow fadeInDown" style="font-size: 3em;" data-wow-duration="1000ms" data-wow-delay="0.3s"><?php echo esc_html( get_field_translation( $porch_fields["title"], $lang ) ) ?></h1>
                     <?php endif; ?>
