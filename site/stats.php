@@ -90,7 +90,7 @@ class P4_Ramadan_Porch_Stats extends DT_Magic_Url_Base
 
         $coverage_levels = DT_Campaigns_Base::query_coverage_levels_progress( $post_id );
         $total_number_of_time_slots = DT_Campaigns_Base::query_coverage_total_time_slots( $post_id );
-        $current_commitments = DT_Time_Utilities::subscribed_times_list( $post_id );
+        $current_commitments = DT_Time_Utilities::get_current_commitments( $post_id );
 
         arsort( $current_commitments );
         $total_mins_prayed = 0;

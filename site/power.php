@@ -97,7 +97,7 @@ class P4_Ramadan_Porch_Power extends DT_Magic_Url_Base
 
         $power_prayer_slots_committed = 0;
 
-        $current_commitments = DT_Time_Utilities::subscribed_times_list( $post_id );
+        $current_commitments = DT_Time_Utilities::get_current_commitments( $post_id );
         foreach ( $current_commitments as $time => $committed ){
             if ( $time < $end && $time >= $start ){
                 $power_prayer_slots_committed += $committed;
