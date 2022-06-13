@@ -160,9 +160,11 @@ class P4_Ramadan_Porch_Landing_Post_Type
         if ( !is_admin() ){
             return;
         }
-
+        if ( !function_exists( 'get_current_screen' ) ){
+            require_once ABSPATH . '/wp-admin/includes/screen.php';
+        }
         $screen = get_current_screen();
-        if ( 'edit' == $screen->base
+        if ( $screen && 'edit' == $screen->base
             && 'landing' == $screen->post_type
             && !isset( $_GET['orderby'] ) ){
             $query->set( 'orderby', 'date' );
